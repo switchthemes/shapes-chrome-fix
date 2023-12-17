@@ -13,7 +13,7 @@ These are files required to manually fix the high pixel density display issue in
   - snippets/media-image-placeholder.liquid
   - snippets/media-video.liquid
   - snippets/product-tile-media-image.liquid
-  - static-sticker.liquid
-  
+  - snippets/static-sticker.liquid
+
 2. Copy the css from `additional-styles.css` and add it to the bottom of `base.bundle.css` or `custom.css`
 
