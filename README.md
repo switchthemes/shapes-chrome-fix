@@ -1,4 +1,4 @@
-# Chrome display issue fix for Shapes theme
+# Display issue fix for Shapes theme
 
 For more information about this fix, [see our help guide](https://help.switchthemes.co/updates/chrome-display-issue.html)
 
