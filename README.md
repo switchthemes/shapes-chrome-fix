@@ -1,6 +1,6 @@
 # Display issue fix for Shapes theme
 
-For more information about this fix, [see our help guide](https://help.switchthemes.co/updates/chrome-display-issue.html)
+For more information about this fix, [see our help guide](https://help.switchthemes.co/updates/chrome-display-issue.html).
 
 These are files required to manually fix the high pixel density display issue in Shapes theme.
 
