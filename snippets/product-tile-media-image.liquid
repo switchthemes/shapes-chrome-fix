@@ -2,9 +2,12 @@
   assign media_id = container_id | append: '-' | append: media.id | append: '-' | append: index
 
   assign hover_image_background = 'bg-scheme-background'
+
   if is_card
     assign hover_image_background = 'bg-scheme-card'
   endif
+
+  assign hover_image_class = 'absolute w-full h-full inset-0 object-cover ' | append: hover_image_background
 
   assign media_style_class = 'media-style overflow-hidden '
   assign media_class = ''
@@ -31,23 +34,24 @@
   <div class="{{ crop_class }} media-content ">
     <div
       class="{{ media_style_class }} relative overflow-hidden z-0"
-      x-transition.opacity
     > 
       {{ media | image_url: width: 2000 | image_tag: class: media_class, loading: 'lazy', sizes: sizes, onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
       
       {%- if hover_image != blank -%}
         <div
-          x-cloak
-          :class="{ 'opacity-100 pointer-events-none' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }"
-          class="absolute w-full h-full inset-0 z-10 transition-opacity ease duration-00 {{ hover_image_background }}">
-          {{ hover_image | image_url: width: 2000 | image_tag: class: 'absolute w-full h-full inset-0 object-cover', loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
+          :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }"
+          class="absolute w-full h-full inset-0 z-10 opacity-0 pointer-events-none transition-opacity will-change-[opacity]">
+          {{ hover_image | image_url: width: 2000 | image_tag: class: hover_image_class, loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
         </div>
       {%- endif -%}
 
       {%- if variant_images_enabled -%}
         {%- for media in product.media -%}
           {%- if variant_images contains media.src -%}
-            <div x-show="current_media_id === {{ media.id }}" class="absolute inset-0 w-full h-full" x-transition.opacity>
+            <div
+              :class="{ 'opacity-100 pointer-events-auto' : current_media_id === {{ media.id }}, 'opacity-0 pointer-events-none' : current_media_id !== {{ media.id }} }"
+              class="absolute inset-0 w-full h-full opacity-0 pointer-events-none transition-opacity will-change-[opacity]"
+            >
               {{ media | image_url: width: 2000 | image_tag: class: 'absolute w-full h-full inset-0 object-cover', loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
             </div>
           {%- endif -%}
@@ -72,16 +76,19 @@
         {{ media | image_url: width: 2000 | image_tag: class: foreign_object_class, loading: 'lazy', sizes: sizes, onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
 
         {%- if hover_image != blank -%}
-          <div x-cloak :class="{ 'opacity-100 pointer-events-none' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }" class="absolute w-full h-full inset-0 z-10 opacity ease duration-00">
-            {{ hover_image | image_url: width: 2000 | image_tag: class: 'absolute w-full h-full inset-0 object-cover', loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
+          <div :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }" class="absolute w-full h-full inset-0 z-10 opacity-0 pointer-events-none transition-opacity will-change-[opacity]">
+            {{ hover_image | image_url: width: 2000 | image_tag: class: hover_image_class, loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
           </div>
         {%- endif -%}
 
         {%- if variant_images_enabled -%}
           {%- for media in product.media -%}
             {%- if variant_images contains media.src -%}
-              <div x-show="current_media_id === {{ media.id }}" class="absolute inset-0 w-full h-full" x-transition.opacity>
-                {{ media | image_url: width: 2000 | image_tag: class: 'absolute w-full h-full inset-0 object-cover', loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
+              <div
+                :class="{ 'opacity-100 pointer-events-auto' : current_media_id === {{ media.id }}, 'opacity-0 pointer-events-none' : current_media_id !== {{ media.id }} }"
+                class="absolute inset-0 w-full h-full opacity-0 pointer-events-none transition-opacity will-change-[opacity]"
+              >
+                {{ media | image_url: width: 2000 | image_tag: class: hover_image_class, loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
               </div>
             {%- endif -%}
           {%- endfor -%}
