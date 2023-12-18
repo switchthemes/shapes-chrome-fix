@@ -1,19 +1,19 @@
 # Display issue fix for Shapes theme
 
-For more information about this issue, [see our help guide](https://help.switchthemes.co/updates/chrome-display-issue.html).
+To manually fix the high pixel density display issue in Shapes theme, you require the files in this repository.
 
-These are files required to manually fix the high pixel density display issue in Shapes theme.
+> For more information about the issue, refer to [our help guide](https://help.switchthemes.co/shapes/updates/display-issue).
 
-### Steps to fix:
+## Steps to fix manually:
 
 1. Replace the following files in your theme with the files included in this repository:
-  - assets/block-sticker.css
-  - sections/call-to-action.liquid
-  - snippets/block-sticker.liquid
-  - snippets/media-image-placeholder.liquid
-  - snippets/media-video.liquid
-  - snippets/product-tile-media-image.liquid
-  - snippets/static-sticker.liquid
 
-2. Copy the css from `additional-styles.css` and add it to the bottom of `base.bundle.css` or `custom.css`
+   - assets/block-sticker.css
+   - sections/call-to-action.liquid
+   - snippets/block-sticker.liquid
+   - snippets/media-image-placeholder.liquid
+   - snippets/media-video.liquid
+   - snippets/product-tile-media-image.liquid
+   - snippets/static-sticker.liquid
 
+1. Copy the css from the `additional-styles.css` file, and then add it to the bottom of your `base.bundle.css` or `custom.css` file.
