@@ -39,7 +39,7 @@
       
       {%- if hover_image != blank -%}
         <div
-          :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }"
+          :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover || 'ontouchstart' in document.documentElement }"
           class="absolute w-full h-full inset-0 z-10 opacity-0 pointer-events-none transition-opacity will-change-[opacity]">
           {{ hover_image | image_url: width: 2000 | image_tag: class: hover_image_class, loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
         </div>
@@ -76,7 +76,7 @@
         {{ media | image_url: width: 2000 | image_tag: class: foreign_object_class, loading: 'lazy', sizes: sizes, onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
 
         {%- if hover_image != blank -%}
-          <div :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover && !('ontouchstart' in document.documentElement) }" class="absolute w-full h-full inset-0 z-10 opacity-0 pointer-events-none transition-opacity will-change-[opacity]">
+          <div :class="{ 'opacity-100 pointer-events-auto' : hover && !('ontouchstart' in document.documentElement), 'opacity-0 pointer-events-none' : !hover || 'ontouchstart' in document.documentElement }" class="absolute w-full h-full inset-0 z-10 opacity-0 pointer-events-none transition-opacity will-change-[opacity]">
             {{ hover_image | image_url: width: 2000 | image_tag: class: hover_image_class, loading: 'lazy', onerror: 'this.style.color="currentColor"', onload: 'this.style.color="currentColor"' }}
           </div>
         {%- endif -%}
