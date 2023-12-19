@@ -8,10 +8,6 @@
     assign foreign_object_class = foreign_object_class | append: 'bg-scheme-card'
     assign media_class = media_class | append: 'bg-scheme-card'
   endif
-
-  unless crop == '' or crop == blank or crop == 'natural'
-    assign media_class = media_class | append: ' object-cover'
-  endunless
 -%}
 {%- if shape contains 'default' or shape == '' or shape == blank -%}
   <div class="media-{{ media_id }} media-style-container  {% if settings.media_drop_shadow_size == 0 %}media-no-shadow{% endif %} {% if disable_media_style %}media-style-none{% endif %} {% if is_card %}media-style-is-card{% endif %} {{ shape | split: '_' | last }}">

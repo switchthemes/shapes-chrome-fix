@@ -20,6 +20,20 @@
   width: 100%;
 }
 
+[class^='object-wrapper'] {
+  position: relative;
+}
+[class^='object-wrapper']:not(.object-wrapper-none) img,
+[class^='object-wrapper']:not(.object-wrapper-none) video,
+[class^='object-wrapper']:not(.object-wrapper-none) svg {
+  position: absolute;
+  inset: 0px;
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 
 /*
 Media drop shadow
