@@ -7,6 +7,9 @@
     assign foreign_object_class = foreign_object_class | append: 'bg-scheme-card'
     assign media_class = media_class | append: 'bg-scheme-card'
   endif
+  unless crop == '' or crop == blank or crop == 'natural'
+   assign media_class = media_class | append: ' object-cover'
+  endunless
 -%}
 
 {%- if shape contains 'default' or shape == '' or shape == blank -%}
