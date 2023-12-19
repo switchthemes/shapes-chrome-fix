@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repository contains files for updating Shapes v2.0.0 or newer. If you’re updating Shapes v1.4.5 or older, use the files in [this repository](https://github.com/switchthemes/shapes-display-fix-for-shapes-v1.4.5-or-older).
+
 # Display issue fix for Shapes theme
 
 To manually fix the high pixel density display issue in Shapes theme, you require the files in this repository.
